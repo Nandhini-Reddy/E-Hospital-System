@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>E-Hospital System</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1 style="color:rgb(11, 11, 11);">E-Hospital System</h1>
+        <nav>
+            <button onclick="showSection('home')"><strong>Home</strong></button>
+            <button onclick="showSection('patient')"><strong>Patient</strong></button>
+            <button onclick="showSection('doctor')"><strong>Doctor</strong></button>
+            <button onclick="showSection('lab')"><strong>Lab</strong></button>
+            <button onclick="showSection('pharmacy')"><strong>Pharmacy</strong></button>
+            <button onclick="showSection('billing')"><strong>Billing</strong></button>
+            <button onclick="showSection('reports')"><strong>Reports</strong></button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Welcome to E-Hospital System</h2>
+            <p>This E-Hospital System is a centralized platform designed to facilitate the seamless interaction between patients, doctors, lab administrators, pharmacy, and billing staff.</p>
+            <ul>
+                <li><strong>Patients</strong> can check doctor availability and book appointments.</li>
+                <li><strong>Doctors</strong> can view, accept, or reject appointments and provide digital prescriptions.</li>
+                <li><strong>Lab Admins</strong> update lab test results directly into the system.</li>
+                <li><strong>Pharmacists</strong> manage medicine stock and deliveries.</li>
+                <li><strong>Billing Staff</strong> generate invoices based on patient activities.</li>
+                <li><strong>Reports</strong> section offers doctor availability, patient visits, and pharmacy deliveries.</li>
+            </ul>
+            <p>Use the navigation menu above to access each portal.</p>
+            <img class="home-image" src="https://5.imimg.com/data5/XO/FF/LF/SELLER-20601258/hospital-management-system.jpg" alt="Hospital Illustration">
+        </section>
+
+        <section id="patient" class="hidden">
+            <h2>Patient Portal</h2>
+            <label for="doctorList">Select Doctor:</label>
+            <select id="doctorList"></select>
+            <label for="patientName">Patient Name:</label>
+            <input type="text" id="patientName" placeholder="Enter your full name" />
+            <label for="patientAge">Age:</label>
+            <input type="number" id="patientAge" placeholder="Enter your age" />
+            <button onclick="bookAppointment()">Book Appointment</button>
+        </section>
+
+        <section id="doctor" class="hidden">
+            <img class="home-image" src="https://merriam-webster.com/assets/mw/images/article/art-wap-landing-mp-lg/alt-5ae892611bf1a-5168-1472832016f2509f3889266323039a33@1x.jpg" alt="Doctor Image">
+            <h2>Doctor Portal</h2>
+            <div id="appointmentRequests"></div>
+            <label for="prescription">Write Prescription:</label>
+            <textarea id="prescription" placeholder="Enter prescription details..."></textarea>
+            <button onclick="storePrescription()">Save Prescription</button>
+        </section>
+
+        <section id="lab" class="hidden">
+            <img class="home-image" src="https://media.istockphoto.com/id/493302504/photo/testing-substances.jpg?s=612x612&w=0&k=20&c=zxRr8On95eALl__Ff06rasZZt6oOud8gGH0_8GFRTH8=" alt="Lab Image">
+            <h2>Lab Admin Portal</h2>
+            <label for="labPatientId">Patient ID:</label>
+            <input type="text" id="labPatientId" placeholder="Enter Patient ID" />
+            <label for="labResult">Lab Test Results:</label>
+            <textarea id="labResult" placeholder="Enter lab test result..."></textarea>
+            <button onclick="updateLabResult()">Update Result</button>
+        </section>
+
+        <section id="pharmacy" class="hidden">
+            <h2>Pharmacy Portal</h2>
+            <img class="home-image" src="https://indoreinstitute.com/wp-content/uploads/2021/09/pharmaceutical-industry.jpg" alt="Pharmacy Image">
+            <label for="stockDetails">Enter stock and delivery details:</label>
+            <textarea id="stockDetails" placeholder="e.g., Paracetamol - 100 tablets available"></textarea>
+            <button onclick="updateStock()">Update Stock</button>
+        </section>
+
+        <section id="billing" class="hidden">
+            <h2>Billing Portal</h2>
+            <img class="home-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1fsh7ReqvfF-Wkagxk6hogKQ1cBCE6ItqGw&s" alt="Billing Image">
+            <label for="billingPatientId">Enter Patient ID:</label>
+            <input type="text" id="billingPatientId" placeholder="Enter Patient ID" />
+            <button onclick="generateBill()">Generate Bill</button>
+            <div id="billOutput"></div>
+        </section>
+
+        <section id="reports" class="hidden">
+            <h2>Reports</h2>
+            <img class="home-image" src="https://media.istockphoto.com/id/1392889303/photo/filling-out-patient-medical-history-personal-data.jpg?s=612x612&w=0&k=20&c=PbeOG1fgkwIVCXGBNS1_bqnV5giogZl-gcPU0Nq9dQY=" alt="Reports Image">
+            <button class="hw" onclick="generateDoctorAvailabilityReport()">Doctor Availability Report</button><hr>
+            <button class="hw" onclick="generatePatientReport()">Day-wise Patients Report</button><hr>
+            <button class="hw" onclick="generatePharmacyReport()">Pharmacy Delivery Report</button><hr>
+            <div id="reportOutput"></div>
+        </section>
+    </main>
+
+    <footer>
+        <h3>Contact Us</h3>
+        <p>Email: support@ehospital.com | Phone: +91-12345-67890</p>
+        <h3>Our Services</h3>
+        <p>24/7 Doctor Availability | Online Lab Reports | Medicine Delivery | Cashless Billing</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
